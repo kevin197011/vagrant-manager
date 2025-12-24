@@ -12,6 +12,7 @@
 #import "BookmarkManager.h"
 #import "CustomCommandManager.h"
 #import "CustomProviderManager.h"
+#import "LanguageManager.h"
 
 @implementation AppDelegate {
     BOOL isRefreshingVagrantMachines;
@@ -30,6 +31,9 @@
     //initialize data
     openWindows = [[NSMutableArray alloc] init];
     
+    //initialize language manager
+    [LanguageManager sharedManager];
+    
     //make sure process is running in the right state
     [self updateProcessType];
 
@@ -43,6 +47,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showUpdateNotificationPreferenceChanged:) name:@"vagrant-manager.show-update-notification-preference-changed" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bookmarksUpdated:) name:@"vagrant-manager.bookmarks-updated" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(customCommandsUpdated:) name:@"vagrant-manager.custom-commands-updated" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(languageChanged:) name:@"vagrant-manager.language-changed" object:nil];
     
     //register for wake from sleep notification
     [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self selector:@selector(receivedWakeNotification:) name:NSWorkspaceDidWakeNotification object:NULL];
@@ -140,6 +145,11 @@
 }
 
 - (void)customCommandsUpdated:(NSNotification*)notification {
+    [_nativeMenu rebuildMenu];
+}
+
+- (void)languageChanged:(NSNotification*)notification {
+    // Rebuild menu when language changes
     [_nativeMenu rebuildMenu];
 }
 

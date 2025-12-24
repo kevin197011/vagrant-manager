@@ -6,6 +6,7 @@
 //
 
 #import "PreferencesWindow.h"
+#import "LanguageManager.h"
 
 @interface PreferencesWindow ()
 
@@ -92,6 +93,22 @@
     
     [self.sendProfileDataCheckBox setState:[Util shouldSendProfileData] ? NSOnState : NSOffState];
     [self.launchAtLoginCheckBox setState:[self willStartAtLogin] ? NSOnState : NSOffState];
+    
+    // Setup language selector
+    [self.languagePopUpButton removeAllItems];
+    NSArray *languages = [[LanguageManager sharedManager] getAvailableLanguages];
+    NSString *currentLanguage = [[LanguageManager sharedManager] getCurrentLanguage];
+    
+    for(NSDictionary *lang in languages) {
+        NSString *code = [lang objectForKey:@"code"];
+        NSString *name = [lang objectForKey:@"name"];
+        [self.languagePopUpButton addItemWithTitle:name];
+        NSMenuItem *item = [self.languagePopUpButton lastItem];
+        item.representedObject = code;
+        if([code isEqualToString:currentLanguage]) {
+            [self.languagePopUpButton selectItem:item];
+        }
+    }
 }
 
 - (IBAction)haltOnExitCheckBoxClicked:(id)sender {
@@ -250,6 +267,21 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [[Util getApp] refreshTimerState];
+}
+
+- (IBAction)languagePopUpButtonClicked:(id)sender {
+    NSString *selectedLanguage = self.languagePopUpButton.selectedItem.representedObject;
+    if(selectedLanguage) {
+        [[LanguageManager sharedManager] setLanguage:selectedLanguage];
+        
+        // Show alert to restart app
+        NSAlert *alert = [[NSAlert alloc] init];
+        alert.messageText = NSLocalizedString(@"Language Changed", nil);
+        alert.informativeText = NSLocalizedString(@"Please restart the application for the language change to take effect.", nil);
+        alert.alertStyle = NSInformationalAlertStyle;
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", nil)];
+        [alert runModal];
+    }
 }
 
 - (void)setLaunchOnLogin:(BOOL)launchOnLogin {

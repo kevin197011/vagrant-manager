@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Vagrant Manager
+
+  Created on 2024.
+*/
+
+CFBundleName = "Vagrant Manager";
+CFBundleDisplayName = "Vagrant Manager";
+

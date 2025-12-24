@@ -31,6 +31,7 @@
 @property (weak) IBOutlet NSPopUpButton *intervalMenu;
 @property (weak) IBOutlet NSButton *dontAnimateStatusIconCheckBox;
 @property (weak) IBOutlet NSButton *showTaskNotificationCheckBox;
+@property (weak) IBOutlet NSPopUpButton *languagePopUpButton;
 
 
 - (IBAction)autoCloseCheckBoxClicked:(id)sender;
@@ -51,6 +52,7 @@
 - (IBAction)intervalMenuChanged:(id)sender;
 - (IBAction)dontAnimateStatusIconCheckBoxClicked:(id)sender;
 - (IBAction)showTaskNotificationCheckBoxClicked:(id)sender;
+- (IBAction)languagePopUpButtonClicked:(id)sender;
 
 
 @end
