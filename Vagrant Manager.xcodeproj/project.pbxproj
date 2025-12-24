@@ -1068,7 +1068,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.8.6;
+				CURRENT_PROJECT_VERSION = 2.8.8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1077,7 +1077,7 @@
 				GCC_PREFIX_HEADER = "Vagrant Manager/Vagrant Manager-Prefix.pch";
 				INFOPLIST_FILE = "Vagrant Manager/Vagrant Manager-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 2.8.6;
+				MARKETING_VERSION = 2.8.8;
 				PRODUCT_BUNDLE_IDENTIFIER = "lanayo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -1090,7 +1090,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.8.6;
+				CURRENT_PROJECT_VERSION = 2.8.8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1099,7 +1099,7 @@
 				GCC_PREFIX_HEADER = "Vagrant Manager/Vagrant Manager-Prefix.pch";
 				INFOPLIST_FILE = "Vagrant Manager/Vagrant Manager-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 2.8.6;
+				MARKETING_VERSION = 2.8.8;
 				PRODUCT_BUNDLE_IDENTIFIER = "lanayo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
