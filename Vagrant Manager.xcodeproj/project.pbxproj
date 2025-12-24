@@ -94,6 +94,7 @@
 		B12661181A00A650009B1635 /* NativeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B12661171A00A650009B1635 /* NativeMenu.m */; };
 		B1357A71187CEB3B00811CBC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1357A70187CEB3B00811CBC /* Cocoa.framework */; };
 		B1357A7B187CEB3B00811CBC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B1357A79187CEB3B00811CBC /* InfoPlist.strings */; };
+		B18AA18F1887CA4600B4C277 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B18AA18E1887CA4600B4C277 /* Localizable.strings */; };
 		B1357A7D187CEB3B00811CBC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B1357A7C187CEB3B00811CBC /* main.m */; };
 		B1357A84187CEB3B00811CBC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1357A83187CEB3B00811CBC /* AppDelegate.m */; };
 		B1357A89187CEB3B00811CBC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1357A88187CEB3B00811CBC /* Images.xcassets */; };
@@ -113,6 +114,7 @@
 		B1761B3D1A00C0140056582F /* NativeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B1761B3C1A00C0140056582F /* NativeMenuItem.m */; };
 		B17AA18B1887A75300B4C274 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = B17AA18A1887A75300B4C274 /* Util.m */; };
 		B17AA18F1887CA4600B4C274 /* PreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B17AA18D1887CA4600B4C274 /* PreferencesWindow.m */; };
+		B18AA18C1887CA4600B4C275 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B18AA18B1887CA4600B4C275 /* LanguageManager.m */; };
 		B17AA1901887CA4600B4C274 /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B17AA18E1887CA4600B4C274 /* PreferencesWindow.xib */; };
 		B17AA1961887DA5800B4C274 /* status_icon_problem.png in Resources */ = {isa = PBXBuildFile; fileRef = B17AA1931887DA5800B4C274 /* status_icon_problem.png */; };
 		B17AA1991887DB8C00B4C274 /* status_icon_off.png in Resources */ = {isa = PBXBuildFile; fileRef = B17AA1971887DB8C00B4C274 /* status_icon_off.png */; };
@@ -267,6 +269,7 @@
 		B1357A74187CEB3B00811CBC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B1357A78187CEB3B00811CBC /* Vagrant Manager-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Vagrant Manager-Info.plist"; sourceTree = "<group>"; };
 		B1357A7A187CEB3B00811CBC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B18AA18D1887CA4600B4C276 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		B1357A7C187CEB3B00811CBC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B1357A7E187CEB3B00811CBC /* Vagrant Manager-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Vagrant Manager-Prefix.pch"; sourceTree = "<group>"; };
 		B1357A82187CEB3B00811CBC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -295,6 +298,8 @@
 		B1761B3C1A00C0140056582F /* NativeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NativeMenuItem.m; sourceTree = "<group>"; };
 		B17AA1891887A75300B4C274 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		B17AA18A1887A75300B4C274 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		B18AA18A1887CA4600B4C275 /* LanguageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageManager.h; sourceTree = "<group>"; };
+		B18AA18B1887CA4600B4C275 /* LanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageManager.m; sourceTree = "<group>"; };
 		B17AA18C1887CA4600B4C274 /* PreferencesWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindow.h; sourceTree = "<group>"; };
 		B17AA18D1887CA4600B4C274 /* PreferencesWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindow.m; sourceTree = "<group>"; };
 		B17AA18E1887CA4600B4C274 /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
@@ -636,6 +641,8 @@
 				B1357A7E187CEB3B00811CBC /* Vagrant Manager-Prefix.pch */,
 				B17AA1891887A75300B4C274 /* Util.h */,
 				B17AA18A1887A75300B4C274 /* Util.m */,
+				B18AA18A1887CA4600B4C275 /* LanguageManager.h */,
+				B18AA18B1887CA4600B4C275 /* LanguageManager.m */,
 				8360A05618C2B37F002EA89B /* Environments.plist */,
 				83F1696D1923789900C54F13 /* VersionComparison.h */,
 				83F1696E1923789900C54F13 /* VersionComparison.m */,
@@ -753,6 +760,7 @@
 				83C4CDE31A060B3600611DCC /* reload@2x.png in Resources */,
 				83C4CE061A0628AC00611DCC /* vagrant_logo_refresh_1-clean@2x.png in Resources */,
 				B1357A7B187CEB3B00811CBC /* InfoPlist.strings in Resources */,
+				B18AA18F1887CA4600B4C277 /* Localizable.strings in Resources */,
 				B17AA1991887DB8C00B4C274 /* status_icon_off.png in Resources */,
 				83C4CE171A062BCF00611DCC /* vagrant_logo_refresh_3-clean.png in Resources */,
 				83C4CDF11A060D4600611DCC /* ssh@2x.png in Resources */,
@@ -899,6 +907,7 @@
 				8339DCA1187E756B0036E162 /* TaskOutputWindow.m in Sources */,
 				B1357A7D187CEB3B00811CBC /* main.m in Sources */,
 				B17AA18B1887A75300B4C274 /* Util.m in Sources */,
+				B18AA18C1887CA4600B4C275 /* LanguageManager.m in Sources */,
 				B17AA18F1887CA4600B4C274 /* PreferencesWindow.m in Sources */,
 				837A30891A5D0D5500E12A40 /* ManageCustomCommandsWindow.m in Sources */,
 				83FD353D19826945002EEA2D /* ManageBookmarksWindow.m in Sources */,
@@ -930,6 +939,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B1357A7A187CEB3B00811CBC /* en */,
+				B18AA18D1887CA4600B4C276 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
