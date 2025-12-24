@@ -276,10 +276,10 @@
         
         // Show alert to restart app
         NSAlert *alert = [[NSAlert alloc] init];
-        alert.messageText = NSLocalizedString(@"Language Changed", nil);
-        alert.informativeText = NSLocalizedString(@"Please restart the application for the language change to take effect.", nil);
+        alert.messageText = VMLocalizedString(@"Language Changed");
+        alert.informativeText = VMLocalizedString(@"Please restart the application for the language change to take effect.");
         alert.alertStyle = NSInformationalAlertStyle;
-        [alert addButtonWithTitle:NSLocalizedString(@"OK", nil)];
+        [alert addButtonWithTitle:VMLocalizedString(@"OK")];
         [alert runModal];
     }
 }

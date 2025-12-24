@@ -1,0 +1,74 @@
+/* 
+  Localizable.strings
+  Vagrant Manager
+
+  Created on 2024.
+*/
+
+/* Preferences Window */
+"Language Changed" = "Language Changed";
+"Please restart the application for the language change to take effect." = "Please restart the application for the language change to take effect.";
+"OK" = "OK";
+
+/* Menu Items */
+"Preferences..." = "Preferences...";
+"About Vagrant Manager" = "About Vagrant Manager";
+"Quit Vagrant Manager" = "Quit Vagrant Manager";
+"Refresh" = "Refresh";
+"Refreshing..." = "Refreshing...";
+"Check For Updates" = "Check For Updates";
+"Check For Vagrant Updates" = "Check For Vagrant Updates";
+"No Vagrant Instances" = "No Vagrant Instances";
+"Running" = "Running";
+"Suspended" = "Suspended";
+"Stopped" = "Stopped";
+"Unknown" = "Unknown";
+
+/* Actions */
+"Up" = "Up";
+"Up All" = "Up All";
+"Up (with provision)" = "Up (with provision)";
+"Up All (with provision)" = "Up All (with provision)";
+"Halt" = "Halt";
+"Halt All" = "Halt All";
+"Suspend" = "Suspend";
+"Suspend All" = "Suspend All";
+"Resume" = "Resume";
+"Reload" = "Reload";
+"Reload All" = "Reload All";
+"Provision" = "Provision";
+"Provision All" = "Provision All";
+"Destroy" = "Destroy";
+"Destroy All" = "Destroy All";
+"SSH" = "SSH";
+"RDP" = "RDP";
+"Open in Finder" = "Open in Finder";
+"Open in Terminal" = "Open in Terminal";
+"Edit Vagrantfile" = "Edit Vagrantfile";
+"Add Bookmark" = "Add Bookmark";
+"Remove Bookmark" = "Remove Bookmark";
+
+/* Menu Sections */
+"All Machines" = "All Machines";
+"Manage Bookmarks" = "Manage Bookmarks";
+"Manage Custom Commands" = "Manage Custom Commands";
+"Manage Custom Providers" = "Manage Custom Providers";
+"Extras" = "Extras";
+"Edit hosts file" = "Edit hosts file";
+"About" = "About";
+
+/* Alerts */
+"Confirm" = "Confirm";
+"Cancel" = "Cancel";
+"Are you sure you want to destroy this machine?" = "Are you sure you want to destroy this machine?";
+"Are you sure you want to destroy all machines?" = "Are you sure you want to destroy all machines?";
+"Are you sure you want to destroy %@?" = "Are you sure you want to destroy %@?";
+" all machines in the group" = " all machines in the group";
+"this machine" = "this machine";
+"(%lu running task%@)" = "(%lu running task%@)";
+
+/* Preferences */
+"Language" = "Language";
+"English" = "English";
+"简体中文" = "简体中文";
+

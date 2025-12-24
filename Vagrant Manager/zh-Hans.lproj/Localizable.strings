@@ -15,6 +15,7 @@
 "About Vagrant Manager" = "关于 Vagrant Manager";
 "Quit Vagrant Manager" = "退出 Vagrant Manager";
 "Refresh" = "刷新";
+"Refreshing..." = "刷新中...";
 "Check For Updates" = "检查更新";
 "Check For Vagrant Updates" = "检查 Vagrant 更新";
 "No Vagrant Instances" = "没有 Vagrant 实例";
@@ -25,12 +26,20 @@
 
 /* Actions */
 "Up" = "启动";
+"Up All" = "全部启动";
+"Up (with provision)" = "启动（带配置）";
+"Up All (with provision)" = "全部启动（带配置）";
 "Halt" = "停止";
+"Halt All" = "全部停止";
 "Suspend" = "暂停";
+"Suspend All" = "全部暂停";
 "Resume" = "恢复";
 "Reload" = "重启";
+"Reload All" = "全部重启";
 "Provision" = "配置";
+"Provision All" = "全部配置";
 "Destroy" = "销毁";
+"Destroy All" = "全部销毁";
 "SSH" = "SSH";
 "RDP" = "RDP";
 "Open in Finder" = "在 Finder 中打开";
@@ -38,6 +47,25 @@
 "Edit Vagrantfile" = "编辑 Vagrantfile";
 "Add Bookmark" = "添加书签";
 "Remove Bookmark" = "移除书签";
+
+/* Menu Sections */
+"All Machines" = "所有机器";
+"Manage Bookmarks" = "管理书签";
+"Manage Custom Commands" = "管理自定义命令";
+"Manage Custom Providers" = "管理自定义提供者";
+"Extras" = "其他";
+"Edit hosts file" = "编辑 hosts 文件";
+"About" = "关于";
+
+/* Alerts */
+"Confirm" = "确认";
+"Cancel" = "取消";
+"Are you sure you want to destroy this machine?" = "确定要销毁此机器吗？";
+"Are you sure you want to destroy all machines?" = "确定要销毁所有机器吗？";
+"Are you sure you want to destroy %@?" = "确定要销毁%@吗？";
+" all machines in the group" = "组中的所有机器";
+"this machine" = "此机器";
+"(%lu running task%@)" = "(%lu 个运行中的任务%@)";
 
 /* Preferences */
 "Language" = "语言";

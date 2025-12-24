@@ -8,6 +8,7 @@
 #import "NativeMenuItem.h"
 #import "BookmarkManager.h"
 #import "CustomCommandManager.h"
+#import "LanguageManager.h"
 
 @implementation NativeMenuItem {
     NSMenu *_submenu;
@@ -79,27 +80,27 @@
         }
         
         if(!_instanceUpMenuItem) {
-            _instanceUpMenuItem = [[NSMenuItem alloc] initWithTitle:self.instance.machines.count > 1 ? @"Up All" : @"Up" action:@selector(upAllMachines:) keyEquivalent:@""];
+            _instanceUpMenuItem = [[NSMenuItem alloc] initWithTitle:self.instance.machines.count > 1 ? VMLocalizedString(@"Up All") : VMLocalizedString(@"Up") action:@selector(upAllMachines:) keyEquivalent:@""];
             _instanceUpMenuItem.target = self;
             _instanceUpMenuItem.image = [NSImage imageNamed:@"up"];
             [_instanceUpMenuItem.image setTemplate:YES];
             [_submenu addItem:_instanceUpMenuItem];
         } else {
-            _instanceUpMenuItem.title = self.instance.machines.count > 1 ? @"Up All" : @"Up";
+            _instanceUpMenuItem.title = self.instance.machines.count > 1 ? VMLocalizedString(@"Up All") : VMLocalizedString(@"Up");
         }
         
         if(!_instanceUpProvisionMenuItem) {
-            _instanceUpProvisionMenuItem = [[NSMenuItem alloc] initWithTitle:self.instance.machines.count > 1 ? @"Up All (with provision)" : @"Up (with provision)" action:@selector(upProvisionAllMachines:) keyEquivalent:@""];
+            _instanceUpProvisionMenuItem = [[NSMenuItem alloc] initWithTitle:self.instance.machines.count > 1 ? VMLocalizedString(@"Up All (with provision)") : VMLocalizedString(@"Up (with provision)") action:@selector(upProvisionAllMachines:) keyEquivalent:@""];
             _instanceUpProvisionMenuItem.target = self;
             _instanceUpProvisionMenuItem.image = [NSImage imageNamed:@"up"];
             [_instanceUpProvisionMenuItem.image setTemplate:YES];
             [_submenu addItem:_instanceUpProvisionMenuItem];
         } else {
-            _instanceUpProvisionMenuItem.title = self.instance.machines.count > 1 ? @"Up All (with provision)" : @"Up (with provision)";
+            _instanceUpProvisionMenuItem.title = self.instance.machines.count > 1 ? VMLocalizedString(@"Up All (with provision)") : VMLocalizedString(@"Up (with provision)");
         }
         
         if(!_sshMenuItem) {
-            _sshMenuItem = [[NSMenuItem alloc] initWithTitle:@"SSH" action:@selector(sshInstance:) keyEquivalent:@""];
+            _sshMenuItem = [[NSMenuItem alloc] initWithTitle:VMLocalizedString(@"SSH") action:@selector(sshInstance:) keyEquivalent:@""];
             _sshMenuItem.target = self;
             _sshMenuItem.image = [NSImage imageNamed:@"ssh"];
             [_sshMenuItem.image setTemplate:YES];
@@ -107,7 +108,7 @@
         }
 
         if(!_rdpMenuItem) {
-            _rdpMenuItem = [[NSMenuItem alloc] initWithTitle:@"RDP" action:@selector(rdpInstance:) keyEquivalent:@""];
+            _rdpMenuItem = [[NSMenuItem alloc] initWithTitle:VMLocalizedString(@"RDP") action:@selector(rdpInstance:) keyEquivalent:@""];
             _rdpMenuItem.target = self;
             _rdpMenuItem.image = [NSImage imageNamed:@"rdp"];
             [_rdpMenuItem.image setTemplate:YES];
@@ -115,45 +116,45 @@
         }
 
         if(!_instanceReloadMenuItem) {
-            _instanceReloadMenuItem = [[NSMenuItem alloc] initWithTitle:self.instance.machines.count > 1 ? @"Reload All" : @"Reload" action:@selector(reloadAllMachines:) keyEquivalent:@""];
+            _instanceReloadMenuItem = [[NSMenuItem alloc] initWithTitle:self.instance.machines.count > 1 ? VMLocalizedString(@"Reload All") : VMLocalizedString(@"Reload") action:@selector(reloadAllMachines:) keyEquivalent:@""];
             _instanceReloadMenuItem.target = self;
             _instanceReloadMenuItem.image = [NSImage imageNamed:@"reload"];
             [_instanceReloadMenuItem.image setTemplate:YES];
             [_submenu addItem:_instanceReloadMenuItem];
         } else {
-            _instanceReloadMenuItem.title = self.instance.machines.count > 1 ? @"Reload All" : @"Reload";
+            _instanceReloadMenuItem.title = self.instance.machines.count > 1 ? VMLocalizedString(@"Reload All") : VMLocalizedString(@"Reload");
         }
         
         if(!_instanceSuspendMenuItem) {
-            _instanceSuspendMenuItem = [[NSMenuItem alloc] initWithTitle:self.instance.machines.count > 1 ? @"Suspend All" : @"Suspend" action:@selector(suspendAllMachines:) keyEquivalent:@""];
+            _instanceSuspendMenuItem = [[NSMenuItem alloc] initWithTitle:self.instance.machines.count > 1 ? VMLocalizedString(@"Suspend All") : VMLocalizedString(@"Suspend") action:@selector(suspendAllMachines:) keyEquivalent:@""];
             _instanceSuspendMenuItem.target = self;
             _instanceSuspendMenuItem.image = [NSImage imageNamed:@"suspend"];
             [_instanceSuspendMenuItem.image setTemplate:YES];
             [_submenu addItem:_instanceSuspendMenuItem];
         } else {
-            _instanceSuspendMenuItem.title = self.instance.machines.count > 1 ? @"Suspend All" : @"Suspend";
+            _instanceSuspendMenuItem.title = self.instance.machines.count > 1 ? VMLocalizedString(@"Suspend All") : VMLocalizedString(@"Suspend");
         }
         
         if(!_instanceHaltMenuItem) {
-            _instanceHaltMenuItem = [[NSMenuItem alloc] initWithTitle:self.instance.machines.count > 1 ? @"Halt All" : @"Halt" action:@selector(haltAllMachines:) keyEquivalent:@""];
+            _instanceHaltMenuItem = [[NSMenuItem alloc] initWithTitle:self.instance.machines.count > 1 ? VMLocalizedString(@"Halt All") : VMLocalizedString(@"Halt") action:@selector(haltAllMachines:) keyEquivalent:@""];
             _instanceHaltMenuItem.target = self;
             _instanceHaltMenuItem.image = [NSImage imageNamed:@"halt"];
             [_instanceHaltMenuItem.image setTemplate:YES];
             [_submenu addItem:_instanceHaltMenuItem];
         } else {
-            _instanceHaltMenuItem.title = self.instance.machines.count > 1 ? @"Halt All" : @"Halt";
+            _instanceHaltMenuItem.title = self.instance.machines.count > 1 ? VMLocalizedString(@"Halt All") : VMLocalizedString(@"Halt");
         }
         
         BOOL optionKeyDestroy = [[NSUserDefaults standardUserDefaults] boolForKey:@"optionKeyDestroy"];
         
         if(!_instanceDestroyMenuItemPlaceholder) {
-            _instanceDestroyMenuItemPlaceholder = [[NSMenuItem alloc] initWithTitle:self.instance.machines.count > 1 ? @"Destroy All" : @"Destroy" action:nil keyEquivalent:@""];
+            _instanceDestroyMenuItemPlaceholder = [[NSMenuItem alloc] initWithTitle:self.instance.machines.count > 1 ? VMLocalizedString(@"Destroy All") : VMLocalizedString(@"Destroy") action:nil keyEquivalent:@""];
             _instanceDestroyMenuItemPlaceholder.image = [NSImage imageNamed:@"destroy"];
             [_instanceDestroyMenuItemPlaceholder.image setTemplate:YES];
             _instanceDestroyMenuItemPlaceholder.enabled = NO;
             [_submenu addItem:_instanceDestroyMenuItemPlaceholder];
         } else {
-            _instanceDestroyMenuItemPlaceholder.title = self.instance.machines.count > 1 ? @"Destroy All" : @"Destroy";
+            _instanceDestroyMenuItemPlaceholder.title = self.instance.machines.count > 1 ? VMLocalizedString(@"Destroy All") : VMLocalizedString(@"Destroy");
         }
 
         if(!optionKeyDestroy) {
@@ -161,13 +162,13 @@
         }
         
         if(!_instanceDestroyMenuItem) {
-            _instanceDestroyMenuItem = [[NSMenuItem alloc] initWithTitle:self.instance.machines.count > 1 ? @"Destroy All" : @"Destroy" action:@selector(destroyAllMachines:) keyEquivalent:@""];
+            _instanceDestroyMenuItem = [[NSMenuItem alloc] initWithTitle:self.instance.machines.count > 1 ? VMLocalizedString(@"Destroy All") : VMLocalizedString(@"Destroy") action:@selector(destroyAllMachines:) keyEquivalent:@""];
             _instanceDestroyMenuItem.target = self;
             _instanceDestroyMenuItem.image = [NSImage imageNamed:@"destroy"];
             [_instanceDestroyMenuItem.image setTemplate:YES];
             [_submenu addItem:_instanceDestroyMenuItem];
         } else {
-            _instanceDestroyMenuItem.title = self.instance.machines.count > 1 ? @"Destroy All" : @"Destroy";
+            _instanceDestroyMenuItem.title = self.instance.machines.count > 1 ? VMLocalizedString(@"Destroy All") : VMLocalizedString(@"Destroy");
         }
         
         if(optionKeyDestroy) {
@@ -178,13 +179,13 @@
         }
         
         if(!_instanceProvisionMenuItem) {
-            _instanceProvisionMenuItem = [[NSMenuItem alloc] initWithTitle:self.instance.machines.count > 1 ? @"Provision All" : @"Provision" action:@selector(provisionAllMachines:) keyEquivalent:@""];
+            _instanceProvisionMenuItem = [[NSMenuItem alloc] initWithTitle:self.instance.machines.count > 1 ? VMLocalizedString(@"Provision All") : VMLocalizedString(@"Provision") action:@selector(provisionAllMachines:) keyEquivalent:@""];
             _instanceProvisionMenuItem.target = self;
             _instanceProvisionMenuItem.image = [NSImage imageNamed:@"provision"];
             [_instanceProvisionMenuItem.image setTemplate:YES];
             [_submenu addItem:_instanceProvisionMenuItem];
         } else {
-            _instanceProvisionMenuItem.title = self.instance.machines.count > 1 ? @"Provision All" : @"Provision";
+            _instanceProvisionMenuItem.title = self.instance.machines.count > 1 ? VMLocalizedString(@"Provision All") : VMLocalizedString(@"Provision");
         }
         
         if(!_instanceCustomCommandMenuItem) {
@@ -220,19 +221,19 @@
         }
         
         if (!_editVagrantfileMenuItem) {
-            _editVagrantfileMenuItem = [[NSMenuItem alloc] initWithTitle:@"Edit Vagrantfile" action:@selector(editVagrantfileMenuItemClicked:) keyEquivalent:@""];
+            _editVagrantfileMenuItem = [[NSMenuItem alloc] initWithTitle:VMLocalizedString(@"Edit Vagrantfile") action:@selector(editVagrantfileMenuItemClicked:) keyEquivalent:@""];
             _editVagrantfileMenuItem.target = self;
             [_submenu addItem:_editVagrantfileMenuItem];
         }
 
         if (!_openInFinderMenuItem) {
-            _openInFinderMenuItem = [[NSMenuItem alloc] initWithTitle:@"Open in Finder" action:@selector(finderMenuItemClicked:) keyEquivalent:@""];
+            _openInFinderMenuItem = [[NSMenuItem alloc] initWithTitle:VMLocalizedString(@"Open in Finder") action:@selector(finderMenuItemClicked:) keyEquivalent:@""];
             _openInFinderMenuItem.target = self;
             [_submenu addItem:_openInFinderMenuItem];
         }
         
         if (!_openInTerminalMenuItem) {
-            _openInTerminalMenuItem = [[NSMenuItem alloc] initWithTitle:@"Open in Terminal" action:@selector(terminalMenuItemClicked:) keyEquivalent:@""];
+            _openInTerminalMenuItem = [[NSMenuItem alloc] initWithTitle:VMLocalizedString(@"Open in Terminal") action:@selector(terminalMenuItemClicked:) keyEquivalent:@""];
             _openInTerminalMenuItem.target = self;
             [_submenu addItem:_openInTerminalMenuItem];
         }
@@ -256,13 +257,13 @@
         _chooseProviderMenuItem.title = [NSString stringWithFormat:@"Provider: %@", self.instance.providerIdentifier ?: @"Unknown"];
         
         if (!_removeBookmarkMenuItem) {
-            _removeBookmarkMenuItem = [[NSMenuItem alloc] initWithTitle:@"Remove from bookmarks" action:@selector(removeBookmarkMenuItemClicked:) keyEquivalent:@""];
+            _removeBookmarkMenuItem = [[NSMenuItem alloc] initWithTitle:VMLocalizedString(@"Remove Bookmark") action:@selector(removeBookmarkMenuItemClicked:) keyEquivalent:@""];
             _removeBookmarkMenuItem.target = self;
             [_submenu addItem:_removeBookmarkMenuItem];
         }
         
         if (!_addBookmarkMenuItem) {
-            _addBookmarkMenuItem = [[NSMenuItem alloc] initWithTitle:@"Add to bookmarks" action:@selector(addBookmarkMenuItemClicked:) keyEquivalent:@""];
+            _addBookmarkMenuItem = [[NSMenuItem alloc] initWithTitle:VMLocalizedString(@"Add Bookmark") action:@selector(addBookmarkMenuItemClicked:) keyEquivalent:@""];
             _addBookmarkMenuItem.target = self;
             [_submenu addItem:_addBookmarkMenuItem];
         }
@@ -359,63 +360,63 @@
                 [machineSubmenu setAutoenablesItems:NO];
                 machineSubmenu.delegate = self;
                 
-                NSMenuItem *machineUpMenuItem = [[NSMenuItem alloc] initWithTitle:@"Up" action:@selector(upMachine:) keyEquivalent:@""];
+                NSMenuItem *machineUpMenuItem = [[NSMenuItem alloc] initWithTitle:VMLocalizedString(@"Up") action:@selector(upMachine:) keyEquivalent:@""];
                 machineUpMenuItem.target = self;
                 machineUpMenuItem.representedObject = machine;
                 machineUpMenuItem.image = [NSImage imageNamed:@"up"];
                 [machineUpMenuItem.image setTemplate:YES];
                 [machineSubmenu addItem:machineUpMenuItem];
                 
-                NSMenuItem *machineUpProvisionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Up (with provision)" action:@selector(upProvisionMachine:) keyEquivalent:@""];
+                NSMenuItem *machineUpProvisionMenuItem = [[NSMenuItem alloc] initWithTitle:VMLocalizedString(@"Up (with provision)") action:@selector(upProvisionMachine:) keyEquivalent:@""];
                 machineUpProvisionMenuItem.target = self;
                 machineUpProvisionMenuItem.representedObject = machine;
                 machineUpProvisionMenuItem.image = [NSImage imageNamed:@"up"];
                 [machineUpProvisionMenuItem.image setTemplate:YES];
                 [machineSubmenu addItem:machineUpProvisionMenuItem];
 
-                NSMenuItem *machineSSHMenuItem = [[NSMenuItem alloc] initWithTitle:@"SSH" action:@selector(sshMachine:) keyEquivalent:@""];
+                NSMenuItem *machineSSHMenuItem = [[NSMenuItem alloc] initWithTitle:VMLocalizedString(@"SSH") action:@selector(sshMachine:) keyEquivalent:@""];
                 machineSSHMenuItem.target = self;
                 machineSSHMenuItem.representedObject = machine;
                 machineSSHMenuItem.image = [NSImage imageNamed:@"ssh"];
                 [machineSSHMenuItem.image setTemplate:YES];
                 [machineSubmenu addItem:machineSSHMenuItem];
 
-                NSMenuItem *machineRDPMenuItem = [[NSMenuItem alloc] initWithTitle:@"RDP" action:@selector(rdpMachine:) keyEquivalent:@""];
+                NSMenuItem *machineRDPMenuItem = [[NSMenuItem alloc] initWithTitle:VMLocalizedString(@"RDP") action:@selector(rdpMachine:) keyEquivalent:@""];
                 machineRDPMenuItem.target = self;
                 machineRDPMenuItem.representedObject = machine;
                 machineRDPMenuItem.image = [NSImage imageNamed:@"rdp"];
                 [machineRDPMenuItem.image setTemplate:YES];
                 [machineSubmenu addItem:machineRDPMenuItem];
 
-                NSMenuItem *machineReloadMenuItem = [[NSMenuItem alloc] initWithTitle:@"Reload" action:@selector(reloadMachine:) keyEquivalent:@""];
+                NSMenuItem *machineReloadMenuItem = [[NSMenuItem alloc] initWithTitle:VMLocalizedString(@"Reload") action:@selector(reloadMachine:) keyEquivalent:@""];
                 machineReloadMenuItem.target = self;
                 machineReloadMenuItem.representedObject = machine;
                 machineReloadMenuItem.image = [NSImage imageNamed:@"reload"];
                 [machineReloadMenuItem.image setTemplate:YES];
                 [machineSubmenu addItem:machineReloadMenuItem];
 
-                NSMenuItem *machineSuspendMenuItem = [[NSMenuItem alloc] initWithTitle:@"Suspend" action:@selector(suspendMachine:) keyEquivalent:@""];
+                NSMenuItem *machineSuspendMenuItem = [[NSMenuItem alloc] initWithTitle:VMLocalizedString(@"Suspend") action:@selector(suspendMachine:) keyEquivalent:@""];
                 machineSuspendMenuItem.target = self;
                 machineSuspendMenuItem.representedObject = machine;
                 machineSuspendMenuItem.image = [NSImage imageNamed:@"suspend"];
                 [machineSuspendMenuItem.image setTemplate:YES];
                 [machineSubmenu addItem:machineSuspendMenuItem];
 
-                NSMenuItem *machineHaltMenuItem = [[NSMenuItem alloc] initWithTitle:@"Halt" action:@selector(haltMachine:) keyEquivalent:@""];
+                NSMenuItem *machineHaltMenuItem = [[NSMenuItem alloc] initWithTitle:VMLocalizedString(@"Halt") action:@selector(haltMachine:) keyEquivalent:@""];
                 machineHaltMenuItem.target = self;
                 machineHaltMenuItem.representedObject = machine;
                 machineHaltMenuItem.image = [NSImage imageNamed:@"halt"];
                 [machineHaltMenuItem.image setTemplate:YES];
                 [machineSubmenu addItem:machineHaltMenuItem];
                 
-                NSMenuItem *machineDestroyMenuItem = [[NSMenuItem alloc] initWithTitle:@"Destroy" action:@selector(destroyMachine:) keyEquivalent:@""];
+                NSMenuItem *machineDestroyMenuItem = [[NSMenuItem alloc] initWithTitle:VMLocalizedString(@"Destroy") action:@selector(destroyMachine:) keyEquivalent:@""];
                 machineDestroyMenuItem.target = self;
                 machineDestroyMenuItem.representedObject = machine;
                 machineDestroyMenuItem.image = [NSImage imageNamed:@"destroy"];
                 [machineDestroyMenuItem.image setTemplate:YES];
                 [machineSubmenu addItem:machineDestroyMenuItem];
                 
-                NSMenuItem *machineProvisionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Provision" action:@selector(provisionMachine:) keyEquivalent:@""];
+                NSMenuItem *machineProvisionMenuItem = [[NSMenuItem alloc] initWithTitle:VMLocalizedString(@"Provision") action:@selector(provisionMachine:) keyEquivalent:@""];
                 machineProvisionMenuItem.target = self;
                 machineProvisionMenuItem.representedObject = machine;
                 machineProvisionMenuItem.image = [NSImage imageNamed:@"provision"];

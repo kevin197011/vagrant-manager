@@ -7,6 +7,9 @@
 
 #import <Foundation/Foundation.h>
 
+// Macro to use LanguageManager for localization
+#define VMLocalizedString(key) [[LanguageManager sharedManager] localizedString:key]
+
 @interface LanguageManager : NSObject
 
 + (LanguageManager*)sharedManager;
