@@ -1,7 +1,5 @@
-# OS X
-.DS_Store
-
 # Xcode
+#
 build/
 *.pbxuser
 !default.pbxuser
@@ -13,16 +11,49 @@ build/
 !default.perspectivev3
 xcuserdata
 *.xccheckout
-profile
 *.moved-aside
 DerivedData
 *.hmap
 *.ipa
+*.xcuserstate
+project.xcworkspace
 
 # CocoaPods
-Pods
-assets/clean.psd
-assets/default.psd
-assets/flat.psd
-assets/indicators.psd
-assets/problem.psd
+#
+Pods/
+
+# App packaging
+#
+*.dmg
+*.app.dSYM.zip
+*.app.dSYM
+
+# Build artifacts
+#
+exportOptions.plist
+*.xcarchive
+
+# OS X
+#
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk

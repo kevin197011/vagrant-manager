@@ -1,6 +1,6 @@
-platform :osx, '10.8'
+platform :osx, '11.0'
 
 target "Vagrant Manager" do
-  pod 'Sparkle'
+  pod 'Sparkle', '~> 2.0'
 end
 

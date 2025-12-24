@@ -1,0 +1,149 @@
+name: Build and Release ARM64 DMG
+
+on:
+  push:
+    tags:
+      - 'v*'  # 当推送以 v 开头的 tag 时触发（例如 v2.7.2）
+  workflow_dispatch:  # 允许手动触发
+    inputs:
+      version:
+        description: 'Version tag (e.g., v2.7.2)'
+        required: true
+        type: string
+
+jobs:
+  build-arm64-dmg:
+    name: Build ARM64 DMG
+    runs-on: macos-14  # macOS 14 (Sonoma) with Apple Silicon support
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install appdmg
+        run: npm install -g appdmg
+      
+      - name: Setup CocoaPods
+        uses: cocoapods-action@v1
+        with:
+          podfile-path: Podfile
+      
+      - name: Install CocoaPods dependencies
+        run: pod install
+      
+      - name: Get version from tag
+        id: get_version
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            VERSION="${{ github.event.inputs.version }}"
+          else
+            VERSION="${GITHUB_REF#refs/tags/}"
+          fi
+          echo "VERSION=${VERSION}" >> $GITHUB_OUTPUT
+          echo "VERSION_NAME=${VERSION#v}" >> $GITHUB_OUTPUT
+          echo "Building version: ${VERSION}"
+      
+      - name: Build Xcode project (ARM64)
+        run: |
+          xcodebuild clean -workspace "Vagrant Manager.xcworkspace" \
+                          -scheme "Vagrant Manager" \
+                          -configuration Release
+          
+          xcodebuild archive -workspace "Vagrant Manager.xcworkspace" \
+                            -scheme "Vagrant Manager" \
+                            -configuration Release \
+                            -arch arm64 \
+                            -sdk macosx \
+                            -archivePath "$PWD/build/Vagrant Manager.xcarchive" \
+                            CODE_SIGN_IDENTITY="" \
+                            CODE_SIGNING_REQUIRED=NO \
+                            CODE_SIGNING_ALLOWED=NO
+      
+      - name: Create export options plist
+        run: |
+          cat > exportOptions.plist <<EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>method</key>
+            <string>mac-application</string>
+            <key>signingStyle</key>
+            <string>manual</string>
+          </dict>
+          </plist>
+          EOF
+      
+      - name: Export .app from archive
+        run: |
+          xcodebuild -exportArchive \
+                    -archivePath "$PWD/build/Vagrant Manager.xcarchive" \
+                    -exportPath "$PWD/build/export" \
+                    -exportOptionsPlist "$PWD/exportOptions.plist"
+      
+      - name: Copy .app to dmg directory
+        run: |
+          cp -R "build/export/Vagrant Manager.app" "dmg/"
+      
+      - name: Create DMG
+        working-directory: dmg
+        run: |
+          appdmg appdmg.json "../Vagrant Manager-${{ steps.get_version.outputs.VERSION_NAME }}-arm64.dmg"
+      
+      - name: Verify DMG
+        run: |
+          hdiutil verify "Vagrant Manager-${{ steps.get_version.outputs.VERSION_NAME }}-arm64.dmg"
+          hdiutil info "Vagrant Manager-${{ steps.get_version.outputs.VERSION_NAME }}-arm64.dmg"
+      
+      - name: Get DMG size
+        id: dmg_size
+        run: |
+          DMG_SIZE=$(du -h "Vagrant Manager-${{ steps.get_version.outputs.VERSION_NAME }}-arm64.dmg" | cut -f1)
+          echo "size=${DMG_SIZE}" >> $GITHUB_OUTPUT
+          echo "DMG size: ${DMG_SIZE}"
+      
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.get_version.outputs.VERSION }}
+          name: Release ${{ steps.get_version.outputs.VERSION }} (ARM64)
+          body: |
+            ## Vagrant Manager ${{ steps.get_version.outputs.VERSION_NAME }} (ARM64)
+            
+            ### 🍎 Apple Silicon Support
+            This release is built for **Apple Silicon (ARM64)** Macs running macOS 11.0 or later.
+            
+            ### 📦 Installation
+            1. Download the DMG file
+            2. Open the DMG
+            3. Drag "Vagrant Manager" to Applications folder
+            
+            ### 📋 Changes
+            - Built for Apple Silicon (ARM64)
+            - Requires macOS 11.0 (Big Sur) or later
+            - Updated Sparkle to 2.x for better ARM64 support
+            
+            ### 🔧 System Requirements
+            - macOS 11.0 (Big Sur) or later
+            - Apple Silicon Mac (M1/M2/M3/M4/M5) or Intel Mac with macOS 11.0+
+            - Vagrant installed and in PATH
+            - VirtualBox or Parallels installed (if using those providers)
+            
+            ### 📊 Build Info
+            - **Architecture**: ARM64
+            - **DMG Size**: ${{ steps.dmg_size.outputs.size }}
+            - **Build Date**: ${{ github.event.head_commit.timestamp || github.run_started_at }}
+          draft: false
+          prerelease: false
+          files: |
+            Vagrant Manager-${{ steps.get_version.outputs.VERSION_NAME }}-arm64.dmg
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
