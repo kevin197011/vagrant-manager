@@ -225,6 +225,27 @@ def generate_new_tag
   new_version
 end
 
+# 更新 Xcode 项目版本号
+def update_xcode_version(version)
+  project_file = 'Vagrant Manager.xcodeproj/project.pbxproj'
+  return false unless File.exist?(project_file)
+
+  content = File.read(project_file)
+  
+  # 更新 MARKETING_VERSION 和 CURRENT_PROJECT_VERSION
+  updated_content = content.gsub(/MARKETING_VERSION = [\d.]+;/, "MARKETING_VERSION = #{version};")
+  updated_content = updated_content.gsub(/CURRENT_PROJECT_VERSION = [\d.]+;/, "CURRENT_PROJECT_VERSION = #{version};")
+  
+  # 如果内容有变化，写入文件
+  if updated_content != content
+    File.write(project_file, updated_content)
+    puts "✅ 更新项目版本号: #{version}"
+    return true
+  end
+  
+  false
+end
+
 # 创建并推送 tag
 def create_and_push_tag(tag_name, commit_message)
   # 检查 tag 是否已存在
@@ -232,6 +253,32 @@ def create_and_push_tag(tag_name, commit_message)
   if tag_check.include?(tag_name)
     puts "⚠️  Tag #{tag_name} 已存在，跳过创建"
     return false
+  end
+
+  # 从 tag 名称中提取版本号（去掉 'v' 前缀）
+  version = tag_name.gsub(/^v/, '')
+  
+  # 更新 Xcode 项目版本号
+  version_updated = update_xcode_version(version)
+  
+  # 如果有版本号更新，需要先提交
+  if version_updated
+    system('git add "Vagrant Manager.xcodeproj/project.pbxproj"')
+    version_commit_message = "chore: 更新版本号到 #{version}"
+    unless system("git commit -m \"#{version_commit_message}\"")
+      puts "❌ 提交版本号更新失败"
+      return false
+    end
+    puts "✅ 已提交版本号更新"
+    
+    # 推送到远程
+    push_output = `git push origin main 2>&1`
+    unless $?.success?
+      puts "❌ 推送版本号更新失败"
+      puts push_output
+      return false
+    end
+    puts "✅ 已推送版本号更新"
   end
 
   # 创建 tag（使用 commit message 的第一行作为 tag message）

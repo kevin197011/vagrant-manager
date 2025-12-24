@@ -45,12 +45,7 @@
         styles = @"<style>body { color:#fff; } a { color: #66f; }</style>";
     }
 
-    NSString *str = [NSString stringWithFormat:@"%@<div style=\"text-align:center;font-family:Arial;font-size:13px\">Copyright &copy;{YEAR} Lanayo Tech<br><br>Vagrant Manager {VERSION}<br><br>%@<br><a href=\"{URL}\">{URL}</a><br><br>%@<br><a href=\"{GITHUB_URL}\">{GITHUB_URL}</a></div>", styles, VMLocalizedString(@"For more information visit:"), VMLocalizedString(@"or check us out on GitHub:")];
-    
-    NSString *dateString = [NSString stringWithCString:__DATE__ encoding:NSASCIIStringEncoding];
-    NSString *yearString = [dateString substringWithRange:NSMakeRange([dateString length] - 4, 4)];
-    
-    str = [str stringByReplacingOccurrencesOfString:@"{YEAR}" withString:yearString];
+    NSString *str = [NSString stringWithFormat:@"%@<div style=\"text-align:center;font-family:Arial;font-size:13px\">Copyright &copy;2025 kk<br><br>Vagrant Manager {VERSION}<br><br>%@<br><a href=\"{URL}\">{URL}</a><br><br>%@<br><a href=\"{GITHUB_URL}\">{GITHUB_URL}</a></div>", styles, VMLocalizedString(@"For more information visit:"), VMLocalizedString(@"or check us out on GitHub:")];
     str = [str stringByReplacingOccurrencesOfString:@"{VERSION}" withString:[[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleShortVersionString"]];
     str = [str stringByReplacingOccurrencesOfString:@"{URL}" withString:[[Environment sharedInstance] aboutURL]];
     str = [str stringByReplacingOccurrencesOfString:@"{GITHUB_URL}" withString:[[Environment sharedInstance] githubURL]];
