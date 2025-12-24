@@ -290,12 +290,28 @@ task :push do
   puts "✅ 提交成功: #{commit_message.lines.first.chomp}"
 
   # 拉取最新代码
+  # 先检查是否有跟踪分支，如果没有则设置
+  current_branch = `git rev-parse --abbrev-ref HEAD`.chomp
+  tracking_branch = `git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>&1`.chomp
+  
+  if tracking_branch.empty? || tracking_branch.include?('fatal')
+    # 设置跟踪分支
+    system("git branch --set-upstream-to=origin/#{current_branch} #{current_branch} 2>&1")
+  end
+  
   pull_output = `git pull 2>&1`
   unless $?.success?
     if pull_output.include?('conflict') || pull_output.include?('CONFLICT')
       puts '❌ 检测到合并冲突，请手动解决后重试'
       puts pull_output
       exit 1
+    elsif pull_output.include?('no tracking information')
+      # 如果还是没有跟踪信息，尝试直接拉取
+      pull_output = `git pull origin #{current_branch} 2>&1`
+      unless $?.success?
+        puts '⚠️  拉取失败，但继续推送'
+        puts pull_output if pull_output.length > 0
+      end
     else
       puts '⚠️  拉取失败，但继续推送'
       puts pull_output if pull_output.length > 0
