@@ -72,3 +72,47 @@
 "English" = "English";
 "简体中文" = "简体中文";
 
+/* Custom Commands */
+"Custom Command" = "自定义命令";
+"Custom Command All" = "全部自定义命令";
+
+/* Provider */
+"Provider: %@" = "提供者: %@";
+
+/* Quit Dialog */
+"Would you like to stop all running machines?" = "是否要停止所有正在运行的机器？";
+"Halt & Quit" = "停止并退出";
+"Quit" = "退出";
+"Suspend & Quit" = "暂停并退出";
+
+/* Error Messages */
+"Path not found: %@" = "路径未找到: %@";
+"There was a problem checking your Vagrant version" = "检查 Vagrant 版本时出现问题";
+"There is a newer version of Vagrant available.\n\nCurrent version: %@\nLatest version: %@" = "有可用的 Vagrant 新版本。\n\n当前版本: %@\n最新版本: %@";
+"Visit Vagrant Website" = "访问 Vagrant 网站";
+"You are running the latest version of Vagrant" = "您正在运行最新版本的 Vagrant";
+"There was an error performing the command" = "执行命令时出错";
+"Are you sure you want to cancel the running task?" = "确定要取消正在运行的任务吗？";
+
+/* Registration */
+"Thank you for registering!" = "感谢您的注册！";
+"The license key you have entered is invalid." = "您输入的许可证密钥无效。";
+
+/* About Window */
+"For more information visit:" = "更多信息请访问：";
+"or check us out on GitHub:" = "或在 GitHub 上查看我们：";
+
+/* Task Window */
+"Running task..." = "正在运行任务...";
+"Completed with errors" = "完成（有错误）";
+"Completed successfully" = "成功完成";
+"Task completed with errors" = "任务完成（有错误）";
+"Task completed successfully" = "任务成功完成";
+
+/* Management Windows */
+"New Command" = "新命令";
+"New Provider" = "新提供者";
+"Manage Bookmarks" = "管理书签";
+"Manage Custom Commands" = "管理自定义命令";
+"Manage Custom Providers" = "管理自定义提供者";
+

@@ -23,6 +23,9 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     
+    // Set localized window title
+    self.window.title = VMLocalizedString(@"Preferences...");
+    
     NSString *terminalPreference = [[NSUserDefaults standardUserDefaults] stringForKey:@"terminalPreference"];
     NSString *terminalEditorPreference = [[NSUserDefaults standardUserDefaults] stringForKey:@"terminalEditorPreference"];
     BOOL autoCloseTaskWindows = [[NSUserDefaults standardUserDefaults] boolForKey:@"autoCloseTaskWindows"];
@@ -274,13 +277,8 @@
     if(selectedLanguage) {
         [[LanguageManager sharedManager] setLanguage:selectedLanguage];
         
-        // Show alert to restart app
-        NSAlert *alert = [[NSAlert alloc] init];
-        alert.messageText = VMLocalizedString(@"Language Changed");
-        alert.informativeText = VMLocalizedString(@"Please restart the application for the language change to take effect.");
-        alert.alertStyle = NSInformationalAlertStyle;
-        [alert addButtonWithTitle:VMLocalizedString(@"OK")];
-        [alert runModal];
+        // Language change notification will update the UI automatically
+        // No need to restart the app
     }
 }
 

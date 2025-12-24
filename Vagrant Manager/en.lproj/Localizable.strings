@@ -72,3 +72,47 @@
 "English" = "English";
 "简体中文" = "简体中文";
 
+/* Custom Commands */
+"Custom Command" = "Custom Command";
+"Custom Command All" = "Custom Command All";
+
+/* Provider */
+"Provider: %@" = "Provider: %@";
+
+/* Quit Dialog */
+"Would you like to stop all running machines?" = "Would you like to stop all running machines?";
+"Halt & Quit" = "Halt & Quit";
+"Quit" = "Quit";
+"Suspend & Quit" = "Suspend & Quit";
+
+/* Error Messages */
+"Path not found: %@" = "Path not found: %@";
+"There was a problem checking your Vagrant version" = "There was a problem checking your Vagrant version";
+"There is a newer version of Vagrant available.\n\nCurrent version: %@\nLatest version: %@" = "There is a newer version of Vagrant available.\n\nCurrent version: %@\nLatest version: %@";
+"Visit Vagrant Website" = "Visit Vagrant Website";
+"You are running the latest version of Vagrant" = "You are running the latest version of Vagrant";
+"There was an error performing the command" = "There was an error performing the command";
+"Are you sure you want to cancel the running task?" = "Are you sure you want to cancel the running task?";
+
+/* Registration */
+"Thank you for registering!" = "Thank you for registering!";
+"The license key you have entered is invalid." = "The license key you have entered is invalid.";
+
+/* About Window */
+"For more information visit:" = "For more information visit:";
+"or check us out on GitHub:" = "or check us out on GitHub:";
+
+/* Task Window */
+"Running task..." = "Running task...";
+"Completed with errors" = "Completed with errors";
+"Completed successfully" = "Completed successfully";
+"Task completed with errors" = "Task completed with errors";
+"Task completed successfully" = "Task completed successfully";
+
+/* Management Windows */
+"New Command" = "New Command";
+"New Provider" = "New Provider";
+"Manage Bookmarks" = "Manage Bookmarks";
+"Manage Custom Commands" = "Manage Custom Commands";
+"Manage Custom Providers" = "Manage Custom Providers";
+

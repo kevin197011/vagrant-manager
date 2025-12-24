@@ -7,6 +7,7 @@
 
 #import "TaskOutputWindow.h"
 #import "AppDelegate.h"
+#import "LanguageManager.h"
 
 @interface TaskOutputWindow () {
     BOOL _isClosed;
@@ -52,7 +53,7 @@
     self.window.title = [NSString stringWithFormat:@"%@ %@", name, self.taskAction];
     
     self.taskCommandLabel.stringValue = self.taskCommand;
-    self.taskStatusLabel.stringValue = @"Running task...";
+    self.taskStatusLabel.stringValue = VMLocalizedString(@"Running task...");
     [self.progressBar startAnimation:self];
 
     [self.task launch];
@@ -76,12 +77,12 @@
     NSString *notificationText;
 
     if(task.terminationStatus != 0) {
-        self.taskStatusLabel.stringValue = @"Completed with errors";
-        notificationText = @"Task completed with errors";
+        self.taskStatusLabel.stringValue = VMLocalizedString(@"Completed with errors");
+        notificationText = VMLocalizedString(@"Task completed with errors");
         [self showWindow:[Util getApp]];
     } else {
-        self.taskStatusLabel.stringValue = @"Completed successfully";
-        notificationText = @"Task completed successfully";
+        self.taskStatusLabel.stringValue = VMLocalizedString(@"Completed successfully");
+        notificationText = VMLocalizedString(@"Task completed successfully");
     }
     
     NSString *name = [self.target isKindOfClass:[VagrantMachine class]] ? [NSString stringWithFormat:@"%@ - %@",((VagrantMachine*)self.target).instance.displayName, ((VagrantMachine*)self.target).name] : ((VagrantInstance*)self.target).displayName;
@@ -138,7 +139,7 @@
 
 - (IBAction)cancelButtonClicked:(id)sender {
     [NSApp activateIgnoringOtherApps:YES];
-    NSAlert *confirmAlert = [NSAlert alertWithMessageText:@"Are you sure you want to cancel the running task?" defaultButton:@"Confirm" alternateButton:@"Cancel" otherButton:nil informativeTextWithFormat:@""];
+    NSAlert *confirmAlert = [NSAlert alertWithMessageText:VMLocalizedString(@"Are you sure you want to cancel the running task?") defaultButton:VMLocalizedString(@"Confirm") alternateButton:VMLocalizedString(@"Cancel") otherButton:nil informativeTextWithFormat:@""];
     [confirmAlert.window makeKeyWindow];
     NSInteger button = [confirmAlert runModal];
     

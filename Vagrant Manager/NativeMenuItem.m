@@ -189,14 +189,14 @@
         }
         
         if(!_instanceCustomCommandMenuItem) {
-            _instanceCustomCommandMenuItem = [[NSMenuItem alloc] initWithTitle:self.instance.machines.count > 1 ? @"Custom Command All" : @"Custom Command" action:nil keyEquivalent:@""];
+            _instanceCustomCommandMenuItem = [[NSMenuItem alloc] initWithTitle:self.instance.machines.count > 1 ? VMLocalizedString(@"Custom Command All") : VMLocalizedString(@"Custom Command") action:nil keyEquivalent:@""];
             _instanceCustomCommandMenuItem.target = self;
             
             [_submenu addItem:_instanceCustomCommandMenuItem];
             _instanceCustomCommandMenuItem.submenu = [[NSMenu alloc] init];
             [_instanceCustomCommandMenuItem.submenu setAutoenablesItems:NO];
         } else {
-            _instanceCustomCommandMenuItem.title = self.instance.machines.count > 1 ? @"Custom Command All" : @"Custom Command";
+            _instanceCustomCommandMenuItem.title = self.instance.machines.count > 1 ? VMLocalizedString(@"Custom Command All") : VMLocalizedString(@"Custom Command");
         }
 
         [_instanceCustomCommandMenuItem.submenu removeAllItems];
@@ -239,7 +239,8 @@
         }
         
         if (!_chooseProviderMenuItem) {
-            _chooseProviderMenuItem = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"Provider: %@", self.instance.providerIdentifier ?: @"Unknown"] action:nil keyEquivalent:@""];
+            NSString *providerName = self.instance.providerIdentifier ?: VMLocalizedString(@"Unknown");
+            _chooseProviderMenuItem = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:VMLocalizedString(@"Provider: %@"), providerName] action:nil keyEquivalent:@""];
             [_submenu addItem:_chooseProviderMenuItem];
         }
         
@@ -254,7 +255,8 @@
         }
         
         [_chooseProviderMenuItem setSubmenu:submenu];
-        _chooseProviderMenuItem.title = [NSString stringWithFormat:@"Provider: %@", self.instance.providerIdentifier ?: @"Unknown"];
+        NSString *providerName = self.instance.providerIdentifier ?: VMLocalizedString(@"Unknown");
+        _chooseProviderMenuItem.title = [NSString stringWithFormat:VMLocalizedString(@"Provider: %@"), providerName];
         
         if (!_removeBookmarkMenuItem) {
             _removeBookmarkMenuItem = [[NSMenuItem alloc] initWithTitle:VMLocalizedString(@"Remove Bookmark") action:@selector(removeBookmarkMenuItemClicked:) keyEquivalent:@""];
@@ -423,7 +425,7 @@
                 [machineProvisionMenuItem.image setTemplate:YES];
                 [machineSubmenu addItem:machineProvisionMenuItem];
                 
-                NSMenuItem *machineCustomCommandMenuItem = [[NSMenuItem alloc] initWithTitle:@"Custom Command" action:nil keyEquivalent:@""];
+                NSMenuItem *machineCustomCommandMenuItem = [[NSMenuItem alloc] initWithTitle:VMLocalizedString(@"Custom Command") action:nil keyEquivalent:@""];
                 //machineCustomCommandMenuItem.image = [NSImage imageNamed:@"provision"];
                 [machineCustomCommandMenuItem.image setTemplate:YES];
                 [machineSubmenu addItem:machineCustomCommandMenuItem];

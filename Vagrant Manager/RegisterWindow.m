@@ -7,6 +7,7 @@
 
 #import "RegisterWindow.h"
 #import "Environment.h"
+#import "LanguageManager.h"
 
 @interface RegisterWindow ()
 
@@ -51,14 +52,14 @@
     if([lic validateLicense:formattedLicenseKey]) {
         [lic storeLicenseKey:formattedLicenseKey];        
         
-        NSAlert *alert = [NSAlert alertWithMessageText:@"Thank you for registering!" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@""];
+        NSAlert *alert = [NSAlert alertWithMessageText:VMLocalizedString(@"Thank you for registering!") defaultButton:VMLocalizedString(@"OK") alternateButton:nil otherButton:nil informativeTextWithFormat:@""];
         [alert runModal];
         
         [[Util getApp] rebuildMenu:YES];
         
         [self close];
     } else {
-        NSAlert *alert = [NSAlert alertWithMessageText:@"The license key you have entered is invalid." defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@""];
+        NSAlert *alert = [NSAlert alertWithMessageText:VMLocalizedString(@"The license key you have entered is invalid.") defaultButton:VMLocalizedString(@"OK") alternateButton:nil otherButton:nil informativeTextWithFormat:@""];
         [alert runModal];
     }
 }

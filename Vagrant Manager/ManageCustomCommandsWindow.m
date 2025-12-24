@@ -7,11 +7,15 @@
 
 #import "ManageCustomCommandsWindow.h"
 #import "CustomCommandManager.h"
+#import "LanguageManager.h"
 
 @implementation ManageCustomCommandsWindow
 
 - (void)windowDidLoad {
     [super windowDidLoad];
+    
+    // Set localized window title
+    self.window.title = VMLocalizedString(@"Manage Custom Commands");
     
     _commands = [[CustomCommandManager sharedManager] getCustomCommands];
     [self.commandsTableView registerForDraggedTypes:[NSArray arrayWithObjects:NSPasteboardTypeString, nil]];
@@ -21,7 +25,7 @@
 
 - (void)addCommandButtonClicked:(id)sender {
     CustomCommand *customCommand = [[CustomCommand alloc] init];
-    customCommand.displayName = @"New Command";
+    customCommand.displayName = VMLocalizedString(@"New Command");
     
     [_commands addObject:customCommand];
     [self saveCustomCommands];

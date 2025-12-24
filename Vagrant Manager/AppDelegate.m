@@ -86,8 +86,8 @@
         // ask if the user would like to halt all running machines
 
         [NSApp activateIgnoringOtherApps:YES];
-        NSAlert *confirmAlert = [NSAlert alertWithMessageText:@"Would you like to stop all running machines?" defaultButton:@"Halt & Quit" alternateButton:@"Quit" otherButton:@"Suspend & Quit" informativeTextWithFormat:@""];
-        [confirmAlert addButtonWithTitle:@"Cancel"];
+        NSAlert *confirmAlert = [NSAlert alertWithMessageText:VMLocalizedString(@"Would you like to stop all running machines?") defaultButton:VMLocalizedString(@"Halt & Quit") alternateButton:VMLocalizedString(@"Quit") otherButton:VMLocalizedString(@"Suspend & Quit") informativeTextWithFormat:@""];
+        [confirmAlert addButtonWithTitle:VMLocalizedString(@"Cancel")];
         
         NSInteger button = [confirmAlert runModal];
 
@@ -318,7 +318,7 @@
         [[NSWorkspace sharedWorkspace] openURL:fileURL];
     } else {
         [NSApp activateIgnoringOtherApps:YES];
-        NSAlert *confirmAlert = [NSAlert alertWithMessageText:[NSString stringWithFormat:@"Path not found: %@", path] defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@""];
+        NSAlert *confirmAlert = [NSAlert alertWithMessageText:[NSString stringWithFormat:VMLocalizedString(@"Path not found: %@"), path] defaultButton:VMLocalizedString(@"OK") alternateButton:nil otherButton:nil informativeTextWithFormat:@""];
         [confirmAlert.window makeKeyWindow];
         [confirmAlert runModal];
     }
@@ -332,7 +332,7 @@
         [self runTerminalCommand:[NSString stringWithFormat:@"cd %@", [Util escapeShellArg:path]]];
     } else {
         [NSApp activateIgnoringOtherApps:YES];
-        NSAlert *alert = [NSAlert alertWithMessageText:[NSString stringWithFormat:@"Path not found: %@", path] defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@""];
+        NSAlert *alert = [NSAlert alertWithMessageText:[NSString stringWithFormat:VMLocalizedString(@"Path not found: %@"), path] defaultButton:VMLocalizedString(@"OK") alternateButton:nil otherButton:nil informativeTextWithFormat:@""];
         [alert.window makeKeyWindow];
         [alert runModal];
     }
@@ -408,14 +408,14 @@
             if(showAlert) {
                 if(invalidOutput) {
                     [NSApp activateIgnoringOtherApps:YES];
-                    NSAlert *alert = [NSAlert alertWithMessageText:@"There was a problem checking your Vagrant version" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@""];
+                    NSAlert *alert = [NSAlert alertWithMessageText:VMLocalizedString(@"There was a problem checking your Vagrant version") defaultButton:VMLocalizedString(@"OK") alternateButton:nil otherButton:nil informativeTextWithFormat:@""];
                     [alert.window makeKeyWindow];
                     [alert runModal];
                 } else if(newVersionAvailable) {
                     [NSApp activateIgnoringOtherApps:YES];
-                    NSAlert *alert = [NSAlert alertWithMessageText:[NSString stringWithFormat:@"There is a newer version of Vagrant available.\n\nCurrent version: %@\nLatest version: %@", currentVersion, latestVersion] defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@""];
+                    NSAlert *alert = [NSAlert alertWithMessageText:[NSString stringWithFormat:VMLocalizedString(@"There is a newer version of Vagrant available.\n\nCurrent version: %@\nLatest version: %@"), currentVersion, latestVersion] defaultButton:VMLocalizedString(@"OK") alternateButton:nil otherButton:nil informativeTextWithFormat:@""];
                     [alert.window makeKeyWindow];
-                    [alert addButtonWithTitle:@"Visit Vagrant Website"];
+                    [alert addButtonWithTitle:VMLocalizedString(@"Visit Vagrant Website")];
                     
                     long response = [alert runModal];
                     
@@ -424,7 +424,7 @@
                     }
                 } else {
                     [NSApp activateIgnoringOtherApps:YES];
-                    NSAlert *alert = [NSAlert alertWithMessageText:@"You are running the latest version of Vagrant" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@""];
+                    NSAlert *alert = [NSAlert alertWithMessageText:VMLocalizedString(@"You are running the latest version of Vagrant") defaultButton:VMLocalizedString(@"OK") alternateButton:nil otherButton:nil informativeTextWithFormat:@""];
                     [alert.window makeKeyWindow];
                     [alert runModal];
                 }
@@ -660,7 +660,7 @@
     [as executeAndReturnError:&errors];
     
     if (errors) {
-        [[NSAlert alertWithMessageText:@"There was an error performing the command" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"%@", errors[NSAppleScriptErrorMessage]] runModal];
+        [[NSAlert alertWithMessageText:VMLocalizedString(@"There was an error performing the command") defaultButton:VMLocalizedString(@"OK") alternateButton:nil otherButton:nil informativeTextWithFormat:@"%@", errors[NSAppleScriptErrorMessage]] runModal];
     }
 }
 

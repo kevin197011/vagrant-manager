@@ -7,11 +7,15 @@
 
 #import "ManageCustomProvidersWindow.h"
 #import "CustomProviderManager.h"
+#import "LanguageManager.h"
 
 @implementation ManageCustomProvidersWindow
 
 - (void)windowDidLoad {
     [super windowDidLoad];
+    
+    // Set localized window title
+    self.window.title = VMLocalizedString(@"Manage Custom Providers");
     
     _providers = [[CustomProviderManager sharedManager] getCustomProviders];
     [self.providersTableView registerForDraggedTypes:[NSArray arrayWithObjects:NSPasteboardTypeString, nil]];
@@ -21,7 +25,7 @@
 
 - (void)addProviderButtonClicked:(id)sender {
     CustomProvider *customProvider = [[CustomProvider alloc] init];
-    customProvider.name = @"New Provider";
+    customProvider.name = VMLocalizedString(@"New Provider");
     
     [_providers addObject:customProvider];
     [self saveCustomProviders];

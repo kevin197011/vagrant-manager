@@ -7,6 +7,7 @@
 
 #import "ManageBookmarksWindow.h"
 #import "BookmarkManager.h"
+#import "LanguageManager.h"
 
 @interface ManageBookmarksWindow ()
 
@@ -24,6 +25,9 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
+    
+    // Set localized window title
+    self.window.title = VMLocalizedString(@"Manage Bookmarks");
     
     bookmarks = [[NSMutableArray alloc] initWithArray:[[BookmarkManager sharedManager] getBookmarks] copyItems:YES];
     
