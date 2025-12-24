@@ -120,6 +120,10 @@ jobs:
           file "build/export/Vagrant Manager.app/Contents/MacOS/Vagrant Manager"
           lipo -info "build/export/Vagrant Manager.app/Contents/MacOS/Vagrant Manager"
       
+      - name: Remove quarantine attribute from .app
+        run: |
+          xattr -cr "build/export/Vagrant Manager.app"
+      
       - name: Copy .app to dmg directory
         run: |
           cp -R "build/export/Vagrant Manager.app" "dmg/"
@@ -160,6 +164,11 @@ jobs:
             1. Download the DMG file
             2. Open the DMG
             3. Drag "Vagrant Manager" to Applications folder
+            
+            **Note:** If macOS shows "Vagrant Manager is damaged" error:
+            - Right-click the app and select "Open" (don't double-click)
+            - Or run: `xattr -cr /Applications/Vagrant\ Manager.app` in Terminal
+            - Then try opening again
             
             ### 📋 Changes
             - Built for ${{ steps.archs.outputs.arch_suffix }} architecture
