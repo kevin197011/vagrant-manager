@@ -127,17 +127,17 @@ jobs:
       - name: Create DMG
         working-directory: dmg
         run: |
-          appdmg appdmg.json "../Vagrant Manager-${{ steps.get_version.outputs.VERSION_NAME }}-${{ steps.archs.outputs.arch_suffix }}.dmg"
+          appdmg appdmg.json "../vagrant-manager-${{ steps.get_version.outputs.VERSION_NAME }}-${{ steps.archs.outputs.arch_suffix }}.dmg"
       
       - name: Verify DMG
         run: |
-          hdiutil verify "Vagrant Manager-${{ steps.get_version.outputs.VERSION_NAME }}-${{ steps.archs.outputs.arch_suffix }}.dmg"
+          hdiutil verify "vagrant-manager-${{ steps.get_version.outputs.VERSION_NAME }}-${{ steps.archs.outputs.arch_suffix }}.dmg"
           echo "DMG verification completed successfully"
       
       - name: Get DMG size
         id: dmg_size
         run: |
-          DMG_SIZE=$(du -h "Vagrant Manager-${{ steps.get_version.outputs.VERSION_NAME }}-${{ steps.archs.outputs.arch_suffix }}.dmg" | cut -f1)
+          DMG_SIZE=$(du -h "vagrant-manager-${{ steps.get_version.outputs.VERSION_NAME }}-${{ steps.archs.outputs.arch_suffix }}.dmg" | cut -f1)
           echo "size=${DMG_SIZE}" >> $GITHUB_OUTPUT
           echo "DMG size: ${DMG_SIZE}"
       
@@ -181,7 +181,7 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            Vagrant Manager-${{ steps.get_version.outputs.VERSION_NAME }}-${{ steps.archs.outputs.arch_suffix }}.dmg
+            vagrant-manager-${{ steps.get_version.outputs.VERSION_NAME }}-${{ steps.archs.outputs.arch_suffix }}.dmg
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
