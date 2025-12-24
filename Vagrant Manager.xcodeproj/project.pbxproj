@@ -636,6 +636,7 @@
 				8360A05918C2B39B002EA89B /* Environment.m */,
 				B1357A78187CEB3B00811CBC /* Vagrant Manager-Info.plist */,
 				B1357A79187CEB3B00811CBC /* InfoPlist.strings */,
+				B18AA18E1887CA4600B4C277 /* Localizable.strings */,
 				B1357A7C187CEB3B00811CBC /* main.m */,
 				83D5D6E519DEBBE10098B8F6 /* appicon_128.png */,
 				B1357A7E187CEB3B00811CBC /* Vagrant Manager-Prefix.pch */,
