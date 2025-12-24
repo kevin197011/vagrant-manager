@@ -29,13 +29,12 @@ jobs:
       - name: Install appdmg
         run: npm install -g appdmg
       
-      - name: Setup CocoaPods
-        uses: cocoapods-action@v1
-        with:
-          podfile-path: Podfile
-      
       - name: Install CocoaPods dependencies
-        run: pod install
+        run: |
+          if ! command -v pod &> /dev/null; then
+            sudo gem install cocoapods
+          fi
+          pod install
       
       - name: Get version from tag
         id: get_version
