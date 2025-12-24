@@ -132,7 +132,7 @@ jobs:
       - name: Verify DMG
         run: |
           hdiutil verify "Vagrant Manager-${{ steps.get_version.outputs.VERSION_NAME }}-${{ steps.archs.outputs.arch_suffix }}.dmg"
-          hdiutil info "Vagrant Manager-${{ steps.get_version.outputs.VERSION_NAME }}-${{ steps.archs.outputs.arch_suffix }}.dmg"
+          echo "DMG verification completed successfully"
       
       - name: Get DMG size
         id: dmg_size
