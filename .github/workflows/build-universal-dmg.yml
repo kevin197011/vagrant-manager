@@ -1,9 +1,9 @@
-name: Build and Release Universal DMG
+name: Build and Release DMG
 
 on:
   push:
     tags:
-      - 'v*'  # 当推送以 v 开头的 tag 时触发
+      - 'v*'  # 当推送以 v 开头的 tag 时触发，默认构建 ARM64
   workflow_dispatch:  # 允许手动触发
     inputs:
       version:
@@ -12,17 +12,17 @@ on:
         type: string
       build_type:
         description: 'Build type'
-        required: true
+        required: false
         type: choice
         options:
-          - universal
           - arm64
+          - universal
           - x86_64
-        default: universal
+        default: arm64
 
 jobs:
-  build-universal-dmg:
-    name: Build Universal DMG
+  build-dmg:
+    name: Build DMG
     runs-on: macos-14  # macOS 14 with Apple Silicon support
     
     steps:
@@ -49,10 +49,10 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
             VERSION="${{ github.event.inputs.version }}"
-            BUILD_TYPE="${{ github.event.inputs.build_type }}"
+            BUILD_TYPE="${{ github.event.inputs.build_type || 'arm64' }}"
           else
             VERSION="${GITHUB_REF#refs/tags/}"
-            BUILD_TYPE="universal"
+            BUILD_TYPE="arm64"
           fi
           echo "VERSION=${VERSION}" >> $GITHUB_OUTPUT
           echo "VERSION_NAME=${VERSION#v}" >> $GITHUB_OUTPUT

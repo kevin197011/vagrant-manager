@@ -1,31 +1,18 @@
 # GitHub Actions Workflows
 
-本项目包含两个 GitHub Actions workflow 用于自动构建和发布 DMG 包。
+本项目包含一个 GitHub Actions workflow 用于自动构建和发布 DMG 包。
 
-## Workflows
+## Workflow
 
-### 1. `build-and-release.yml` - ARM64 专用构建
-
-专门用于构建 ARM64 (Apple Silicon) 版本的 DMG 包。
-
-**触发方式：**
-- 推送以 `v` 开头的 tag（例如：`v2.7.2`）
-- 手动触发（Workflow Dispatch）
-
-**构建内容：**
-- ARM64 架构的应用程序
-- DMG 安装包
-- 自动发布到 GitHub Releases
-
-### 2. `build-universal-dmg.yml` - 通用/多架构构建
+### `build-universal-dmg.yml` - DMG 构建和发布
 
 支持构建多种架构的 DMG 包：
-- Universal（同时支持 ARM64 和 x86_64）
-- ARM64 only
-- x86_64 only
+- **ARM64**（默认）- Apple Silicon Mac
+- **Universal** - 同时支持 ARM64 和 x86_64
+- **x86_64** - Intel Mac
 
 **触发方式：**
-- 推送以 `v` 开头的 tag
+- 推送以 `v` 开头的 tag（默认构建 ARM64）
 - 手动触发（可选择构建类型）
 
 ## 使用方法
@@ -40,24 +27,27 @@
 
 2. **Workflow 会自动：**
    - 检测到 tag 推送
-   - 开始构建
+   - 默认构建 ARM64 版本
    - 创建 DMG 包
    - 发布到 GitHub Releases
 
 ### 手动触发
 
 1. 进入 GitHub 仓库的 **Actions** 标签页
-2. 选择对应的 workflow
+2. 选择 **Build and Release DMG** workflow
 3. 点击 **Run workflow**
 4. 输入版本号（例如：`v2.7.2`）
-5. 选择构建类型（仅限 universal workflow）
+5. 选择构建类型（arm64/universal/x86_64，默认 arm64）
 6. 点击 **Run workflow**
 
 ## 构建产物
 
 构建完成后，会在 GitHub Releases 中创建：
-- **Release 标题**：`Release v2.7.2 (arm64)` 或 `Release v2.7.2 (universal)`
-- **DMG 文件**：`Vagrant Manager-2.7.2-arm64.dmg` 或 `Vagrant Manager-2.7.2-universal.dmg`
+- **Release 标题**：`Release v2.7.2 (arm64)` 或 `Release v2.7.2 (universal)` 等
+- **DMG 文件**：根据构建类型命名，例如：
+  - `Vagrant Manager-2.7.2-arm64.dmg`（ARM64）
+  - `Vagrant Manager-2.7.2-universal.dmg`（Universal）
+  - `Vagrant Manager-2.7.2-x86_64.dmg`（Intel）
 
 ## 系统要求
 
