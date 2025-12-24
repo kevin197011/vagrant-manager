@@ -94,7 +94,6 @@
 		B12661181A00A650009B1635 /* NativeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B12661171A00A650009B1635 /* NativeMenu.m */; };
 		B1357A71187CEB3B00811CBC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1357A70187CEB3B00811CBC /* Cocoa.framework */; };
 		B1357A7B187CEB3B00811CBC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B1357A79187CEB3B00811CBC /* InfoPlist.strings */; };
-		B18AA18F1887CA4600B4C277 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B18AA18E1887CA4600B4C277 /* Localizable.strings */; };
 		B1357A7D187CEB3B00811CBC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B1357A7C187CEB3B00811CBC /* main.m */; };
 		B1357A84187CEB3B00811CBC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1357A83187CEB3B00811CBC /* AppDelegate.m */; };
 		B1357A89187CEB3B00811CBC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1357A88187CEB3B00811CBC /* Images.xcassets */; };
@@ -114,11 +113,11 @@
 		B1761B3D1A00C0140056582F /* NativeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B1761B3C1A00C0140056582F /* NativeMenuItem.m */; };
 		B17AA18B1887A75300B4C274 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = B17AA18A1887A75300B4C274 /* Util.m */; };
 		B17AA18F1887CA4600B4C274 /* PreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B17AA18D1887CA4600B4C274 /* PreferencesWindow.m */; };
-		B18AA18C1887CA4600B4C275 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B18AA18B1887CA4600B4C275 /* LanguageManager.m */; };
 		B17AA1901887CA4600B4C274 /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B17AA18E1887CA4600B4C274 /* PreferencesWindow.xib */; };
 		B17AA1961887DA5800B4C274 /* status_icon_problem.png in Resources */ = {isa = PBXBuildFile; fileRef = B17AA1931887DA5800B4C274 /* status_icon_problem.png */; };
 		B17AA1991887DB8C00B4C274 /* status_icon_off.png in Resources */ = {isa = PBXBuildFile; fileRef = B17AA1971887DB8C00B4C274 /* status_icon_off.png */; };
 		B17AA19A1887DB8C00B4C274 /* status_icon_on.png in Resources */ = {isa = PBXBuildFile; fileRef = B17AA1981887DB8C00B4C274 /* status_icon_on.png */; };
+		B18AA18C1887CA4600B4C275 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B18AA18B1887CA4600B4C275 /* LanguageManager.m */; };
 		B1FAFC791920B62D009F0F86 /* status_icon_suspended.png in Resources */ = {isa = PBXBuildFile; fileRef = B1FAFC781920B62D009F0F86 /* status_icon_suspended.png */; };
 		EF9CC0C06EBF48E30B22392F /* libPods-Vagrant Manager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3AEF745A02767367BAF2F13 /* libPods-Vagrant Manager.a */; };
 /* End PBXBuildFile section */
@@ -269,7 +268,6 @@
 		B1357A74187CEB3B00811CBC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B1357A78187CEB3B00811CBC /* Vagrant Manager-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Vagrant Manager-Info.plist"; sourceTree = "<group>"; };
 		B1357A7A187CEB3B00811CBC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		B18AA18D1887CA4600B4C276 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		B1357A7C187CEB3B00811CBC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B1357A7E187CEB3B00811CBC /* Vagrant Manager-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Vagrant Manager-Prefix.pch"; sourceTree = "<group>"; };
 		B1357A82187CEB3B00811CBC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -298,14 +296,15 @@
 		B1761B3C1A00C0140056582F /* NativeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NativeMenuItem.m; sourceTree = "<group>"; };
 		B17AA1891887A75300B4C274 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		B17AA18A1887A75300B4C274 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
-		B18AA18A1887CA4600B4C275 /* LanguageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageManager.h; sourceTree = "<group>"; };
-		B18AA18B1887CA4600B4C275 /* LanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageManager.m; sourceTree = "<group>"; };
 		B17AA18C1887CA4600B4C274 /* PreferencesWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindow.h; sourceTree = "<group>"; };
 		B17AA18D1887CA4600B4C274 /* PreferencesWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindow.m; sourceTree = "<group>"; };
 		B17AA18E1887CA4600B4C274 /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
 		B17AA1931887DA5800B4C274 /* status_icon_problem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_icon_problem.png; sourceTree = "<group>"; };
 		B17AA1971887DB8C00B4C274 /* status_icon_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_icon_off.png; sourceTree = "<group>"; };
 		B17AA1981887DB8C00B4C274 /* status_icon_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_icon_on.png; sourceTree = "<group>"; };
+		B18AA18A1887CA4600B4C275 /* LanguageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageManager.h; sourceTree = "<group>"; };
+		B18AA18B1887CA4600B4C275 /* LanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageManager.m; sourceTree = "<group>"; };
+		B18AA18D1887CA4600B4C276 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		B1A5DE7D192354E900AF0CA5 /* VirtualMachineServiceProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VirtualMachineServiceProvider.h; sourceTree = "<group>"; };
 		B1FAFC781920B62D009F0F86 /* status_icon_suspended.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_icon_suspended.png; sourceTree = "<group>"; };
 		B6AC85BFC2445FC5F426BB3C /* Pods-Vagrant Manager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vagrant Manager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vagrant Manager/Pods-Vagrant Manager.debug.xcconfig"; sourceTree = "<group>"; };
@@ -636,7 +635,6 @@
 				8360A05918C2B39B002EA89B /* Environment.m */,
 				B1357A78187CEB3B00811CBC /* Vagrant Manager-Info.plist */,
 				B1357A79187CEB3B00811CBC /* InfoPlist.strings */,
-				B18AA18E1887CA4600B4C277 /* Localizable.strings */,
 				B1357A7C187CEB3B00811CBC /* main.m */,
 				83D5D6E519DEBBE10098B8F6 /* appicon_128.png */,
 				B1357A7E187CEB3B00811CBC /* Vagrant Manager-Prefix.pch */,
@@ -761,7 +759,6 @@
 				83C4CDE31A060B3600611DCC /* reload@2x.png in Resources */,
 				83C4CE061A0628AC00611DCC /* vagrant_logo_refresh_1-clean@2x.png in Resources */,
 				B1357A7B187CEB3B00811CBC /* InfoPlist.strings in Resources */,
-				B18AA18F1887CA4600B4C277 /* Localizable.strings in Resources */,
 				B17AA1991887DB8C00B4C274 /* status_icon_off.png in Resources */,
 				83C4CE171A062BCF00611DCC /* vagrant_logo_refresh_3-clean.png in Resources */,
 				83C4CDF11A060D4600611DCC /* ssh@2x.png in Resources */,
@@ -836,12 +833,10 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Vagrant Manager/Pods-Vagrant Manager-frameworks.sh",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework",
-				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
-				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
